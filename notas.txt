@@ -1,0 +1,54 @@
+-------------------- NOTAS --------------------
+
+quando for 1:
+não faz nada;
+
+quando for 2:
+verifica se está organizado;
+
+quando for 3 números
+passa função chamada "sort three";
+
+numeros > 3
+radix sort binary;
+
+____________________________________________
+
+tarefas 26/11
+
+[x] montar a função sort_three
+[ ] montar a função do radix
+[ ] fazer a verificação de 2 numeros
+[ ]
+
+_____________________________________________
+
+
+operações usadas:
+
+rra
+ra
+pa
+pb
+sa
+
+_____________________________________________
+
+funções da libft:
+
+ft_split;
+ft_atoi;
+
+/*as de listas sofrem pequenas mudanças por causa do prev, precisa alterar o prev*/
+
+listaddfront;
+listaddback;
+listnew;
+listsize;
+listlast;
+
+_______________________________________________
+
+_push_swap.c \
+
+_push_swap.o \
