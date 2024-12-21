@@ -5,33 +5,55 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vfidelis <vfidelis@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 02:22:56 by vfidelis          #+#    #+#             */
-/*   Updated: 2024/11/30 02:22:56 by vfidelis         ###   ########.fr       */
+/*   Created: 2024/12/03 11:56:36 by vfidelis          #+#    #+#             */
+/*   Updated: 2024/12/03 11:56:36 by vfidelis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-int ft_error(int num)
+int	ft_error(int num)
 {
-    if (num == 0)
-    {
-        write(2, "Error", 5);
-        exit(1);
-    }
-    return (2);
+	if (num == 0)
+		write(2, "Error", 5);
+	return (2);
 }
 
-int ft_atoi_error(char *str, size_t i)
+bool	ft_valid(t_list *lst, t_list *last_lst, long number)
 {
-    if (str == NULL)
-        return(ft_error(0));
-    else if ((str[i] != '-' && str[i] != '+') && !(str[i] >= '0' && str[i] <= '9'))
-        return(ft_error(0));
-    else if((str[i] == '-') && (str[i + 1] == '-' || str[i + 1] == '+'))
-        return(ft_error(0)); 
-    else if((str[i] == '+') && (str[i + 1] == '-' || str[i + 1] == '+'))
-        return(ft_error(0));
-    return (ft_error(2));
+	int	i;
+
+	i = 0;
+	if (number > 2147483647 || number < -2147483648)
+		return (false);
+	while (lst)
+	{
+		if (lst->num == number)
+			i++;
+		lst = lst->next;
+	}
+	while (last_lst)
+	{
+		if (last_lst->num == number)
+			i++;
+		last_lst = last_lst->prev;
+	}
+	if (i >= 2)
+		return (false);
+	return (true);
+}
+
+int	ft_atoi_error(char *str, size_t i)
+{
+	if (str == NULL)
+		return (ft_error(0));
+	else if ((str[i] != '-' && str[i] != '+') && !(str[i] >= '0'
+			&& str[i] <= '9'))
+		return (ft_error(0));
+	else if ((str[i] == '-') && (str[i + 1] == '-' || str[i + 1] == '+'))
+		return (ft_error(0));
+	else if ((str[i] == '+') && (str[i + 1] == '-' || str[i + 1] == '+'))
+		return (ft_error(0));
+	return (ft_error(2));
 }
