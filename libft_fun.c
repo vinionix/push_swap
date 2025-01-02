@@ -2,14 +2,11 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   libft_fun.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+        
-	+:+     */
-/*   By: vfidelis <vfidelis@student.42.rio>         +#+  +:+      
-	+#+        */
-/*                                                +#+#+#+#+#+  
-	+#+           */
-/*   Created: 2024/12/03 11:47:49 by vfidelis          #+#    #+#             */
-/*   Updated: 2024/12/03 13:44:21 by vfidelis         ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vfidelis <vfidelis@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/26 15:12:26 by vfidelis          #+#    #+#             */
+/*   Updated: 2024/12/26 15:12:26 by vfidelis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +21,26 @@ long	ft_atoi(char *str)
 
 	receiver = 0;
 	i = 0;
-	if ((str[i] && str[i] >= 9 && str[i] <= 13) || (str[i] == 32))
+	if ((str[i] && str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i = ft_is_space(i, str);
 	j = i;
-	if (ft_atoi_error(str, i) != 2)
-		return (ft_atoi_error(str, i));
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	while ((str[i] >= '0' && str[i] <= '9'))
+	if (str[i] < '0' || str[i] > '9') 
+		return (-2147483649);
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		receiver = receiver * 10;
 		receiver = receiver + (str[i] - '0');
 		i++;
 	}
+	if (str[i] != '\0')
+		return (-2147483649);
 	if (str[j] == '-')
 	{
 		receiver *= -1;
 		return (receiver);
-	}
+	} 
 	return (receiver);
 }
 

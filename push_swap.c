@@ -20,19 +20,17 @@ int	main(int argc, char **argv)
 	t_list	*b;
 
 	a = NULL;
-	b = malloc(sizeof(t_list));
-	b->prev = NULL;
-	b->next = NULL;
+	b = NULL;
 	if (argc == 1)
 		return (0);
 	else if (argc == 2)
 	{
 		argv = ft_split(argv[1]);
-		ft_initialize(&a, argv);
+		ft_initialize(&a, argv, argc);
+		ft_free(argv);
 	}
 	else
-		ft_initialize(&a, argv + 1);
-	ft_free(argv);
+		ft_initialize(&a, argv + 1, argc);
+	what_algorithm(&a, &b);
 	free_lst(&a);
-	free_lst(&b);
 }

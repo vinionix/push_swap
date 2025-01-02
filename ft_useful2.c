@@ -49,16 +49,55 @@ void	ft_free(char **hqts)
 	return ;
 }
 
-long	is_bigger(t_list *lst)
+long	is_bigger(t_list *lst, int options)
 {
 	long	bigger;
 
-	bigger = 0;
-	while(lst)
+	bigger = -2147483648;
+	if (options == 1)
 	{
-		if (lst->num > bigger)
-			bigger = lst->num;
-		lst = lst->next;
+		while(lst)
+		{
+			if (lst->num > bigger)
+				bigger = lst->num;
+			lst = lst->next;
+		}
+	}
+	else
+	{
+		while(lst)
+		{
+			if (lst->num > bigger && lst->index == 0)
+				bigger = lst->num;
+			lst = lst->next;
+		}
 	}
 	return (bigger);
+}
+
+void	ft_index(t_list **lst_a)
+{
+	t_list	*temp;
+	long	bigger;
+	long	receiver;
+
+	bigger = ft_lstsize((*lst_a));
+	receiver = 0;
+	temp = NULL;
+	while (bigger > 0)
+	{
+		receiver = is_bigger(*lst_a, 2);
+		while (temp)
+		{
+			if (temp->num == receiver)
+			{
+				temp->index = bigger;
+				break;
+			}
+			temp = temp->next;
+		}
+		temp = (*lst_a);
+		bigger--;
+	}
+	(*lst_a) = temp;
 }

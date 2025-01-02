@@ -19,6 +19,7 @@ FUNCTIONS = push_swap.c \
 			ft_useful2.c \
 			ft_initialize.c \
 			operations.c \
+			ft_algorithms.c
 
 
 OBJS =	push_swap.o \
@@ -27,7 +28,8 @@ OBJS =	push_swap.o \
 		ft_useful.o \
 		ft_useful2.o \
 		ft_initialize.o \
-		operations.o
+		operations.o \
+		ft_algorithms.o
 
 LIB = push_swap.a
 

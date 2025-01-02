@@ -32,8 +32,9 @@ void    ft_push_a_b(t_list **lst1, t_list **lst2, char chr)
 {
     t_list  *temp;
 
-    temp = (*lst1)->next;
-    temp->prev = NULL;
+    temp = NULL;
+    if((*lst1)->next != NULL)
+        temp = (*lst1)->next;
     (*lst1)->next = NULL;
     if ((*lst2) == NULL)
     {
@@ -41,13 +42,15 @@ void    ft_push_a_b(t_list **lst1, t_list **lst2, char chr)
         (*lst2)->next = NULL;
         (*lst2)->prev = NULL;
         (*lst1) = temp;
-        return ;
     }
-    (*lst1)->prev = NULL;
-    (*lst1)->next = (*lst2);
-    (*lst2)->prev = (*lst1);
-    (*lst2) = (*lst2)->prev;
-    (*lst1) = temp;
+    else
+    {
+        (*lst1)->prev = NULL;
+        (*lst1)->next = (*lst2);
+        (*lst2)->prev = (*lst1);
+        (*lst2) = (*lst2)->prev;
+        (*lst1) = temp;
+    }
     if (chr == 'a')
         write(1, "pb\n", 3);
     else
